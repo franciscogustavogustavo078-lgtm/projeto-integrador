@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Contrato</title>
+    <link rel="stylesheet" href="css/cadcontratos.css">
+</head>
+<body>
+
+    <!-- MENU -->
+    <div class="menu">
+        <h2>Contratos</h2>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="contratos.html">Contratos</a></li>
+            <li><a href="partes.html">Partes</a></li>
+            <li><a href="relatorios.html">Relatórios</a></li>
+            <li><a href="config.html">Configurações</a></li>
+        </ul>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="conteudo">
+
+        <h1>Novo Contrato</h1>
+
+        <form class="formulario">
+
+            <input type="text" placeholder="Número do contrato" required>
+
+            <select>
+                <option>Tipo de contrato</option>
+                <option>Serviço</option>
+                <option>Parceria</option>
+                <option>Fornecimento</option>
+            </select>
+
+            <input type="text" placeholder="Parte contratante">
+
+            <textarea placeholder="Descrição"></textarea>
+
+            <label>Data de Início</label>
+            <input type="date">
+
+            <label>Data de Fim</label>
+            <input type="date">
+
+            <input type="number" placeholder="Valor total">
+
+            <select>
+                <option>Status</option>
+                <option>Ativo</option>
+                <option>Vencido</option>
+                <option>Rescindido</option>
+            </select>
+
+            <button class="salvar">Salvar Contrato</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
