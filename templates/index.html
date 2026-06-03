@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Dashboard - Contratos</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='index.css') }}">
+
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <div class="menu">
+
+        <h2>Contratos</h2>
+
+        <ul>
+
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/">Contratos</a>
+            </li>
+
+            <li>
+                <a href="/cadastro">Novo Contrato</a>
+            </li>
+
+            <li>
+                <a href="partes.html">Partes</a>
+            </li>
+
+            <li>
+                <a href="relatorios.html">Relatórios</a>
+            </li>
+
+            <li>
+                <a href="config.html">Configurações</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="conteudo">
+
+        <h1>Dashboard</h1>
+
+        <!-- CARDS -->
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Total de Contratos</h3>
+
+                <p>{{ total }}</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Ativos</h3>
+
+                <p>{{ ativos }}</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Vencidos</h3>
+
+                <p>{{ vencidos }}</p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Rescindidos</h3>
+
+                <p>{{ rescindidos }}</p>
+
+            </div>
+
+        </div>
+
+        <!-- ALERTAS -->
+        <div class="alerta">
+
+            <h3>
+                ⚠ Contratos cadastrados
+            </h3>
+
+            <ul>
+
+                {% for contrato in contratos %}
+
+                <li>
+
+                    Contrato {{ contrato.numero }}
+                    -
+                    {{ contrato.parte }}
+                    -
+                    {{ contrato.status }}
+
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

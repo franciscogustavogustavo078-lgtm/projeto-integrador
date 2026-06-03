@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Contratos</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='contratos.css') }}">
+
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <div class="menu">
+
+        <h2>Contratos</h2>
+
+        <ul>
+
+            <li>
+                <a href="/">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/">Contratos</a>
+            </li>
+
+            <li>
+                <a href="partes.html">Partes</a>
+            </li>
+
+            <li>
+                <a href="relatorios.html">Relatórios</a>
+            </li>
+
+            <li>
+                <a href="config.html">Configurações</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="conteudo">
+
+        <h1>Contratos</h1>
+
+        <a href="/cadastro">
+
+            <button class="novo">
+                + Novo Contrato
+            </button>
+
+        </a>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Nº</th>
+
+                    <th>Tipo</th>
+
+                    <th>Parte</th>
+
+                    <th>Início</th>
+
+                    <th>Fim</th>
+
+                    <th>Valor</th>
+
+                    <th>Status</th>
+
+                    <th>Ações</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for contrato in contratos %}
+
+                <tr>
+
+                    <td>{{ contrato.numero }}</td>
+
+                    <td>{{ contrato.tipo }}</td>
+
+                    <td>{{ contrato.parte }}</td>
+
+                    <td>{{ contrato.inicio }}</td>
+
+                    <td>{{ contrato.fim }}</td>
+
+                    <td>{{ contrato.valor }}</td>
+
+                    <td>{{ contrato.status }}</td>
+
+                    <td>
+
+                        <a href="/editar/{{ contrato.id }}">
+
+                            <button class="acao">
+                                Editar
+                            </button>
+
+                        </a>
+
+                        <a href="/excluir/{{ contrato.id }}">
+
+                            <button class="acao">
+                                Excluir
+                            </button>
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

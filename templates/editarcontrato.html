@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Editar Contrato</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='editarcontrato.css') }}">
+
+</head>
+
+<body>
+
+    <div class="menu">
+
+        <h2>Contratos</h2>
+
+        <ul>
+
+            <li>
+                <a href="/">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/">Contratos</a>
+            </li>
+
+            <li>
+                <a href="partes.html">Partes</a>
+            </li>
+
+            <li>
+                <a href="relatorios.html">Relatórios</a>
+            </li>
+
+            <li>
+                <a href="config.html">Configurações</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="conteudo">
+
+        <h1>Editar Contrato</h1>
+
+        <form
+        class="formulario"
+        action="/atualizar/{{ contrato.id }}"
+        method="POST">
+
+            <input
+            type="text"
+            name="numero"
+            value="{{ contrato.numero }}">
+
+            <select name="tipo">
+
+                <option
+                {% if contrato.tipo == 'Serviço' %}
+                selected
+                {% endif %}>
+                Serviço
+                </option>
+
+                <option
+                {% if contrato.tipo == 'Parceria' %}
+                selected
+                {% endif %}>
+                Parceria
+                </option>
+
+                <option
+                {% if contrato.tipo == 'Fornecimento' %}
+                selected
+                {% endif %}>
+                Fornecimento
+                </option>
+
+            </select>
+
+            <input
+            type="text"
+            name="parte"
+            value="{{ contrato.parte }}">
+
+            <textarea
+            name="descricao">{{ contrato.descricao }}</textarea>
+
+            <input
+            type="date"
+            name="inicio"
+            value="{{ contrato.inicio }}">
+
+            <input
+            type="date"
+            name="fim"
+            value="{{ contrato.fim }}">
+
+            <input
+            type="number"
+            name="valor"
+            value="{{ contrato.valor }}">
+
+            <select name="status">
+
+                <option
+                {% if contrato.status == 'Ativo' %}
+                selected
+                {% endif %}>
+                Ativo
+                </option>
+
+                <option
+                {% if contrato.status == 'Vencido' %}
+                selected
+                {% endif %}>
+                Vencido
+                </option>
+
+                <option
+                {% if contrato.status == 'Rescindido' %}
+                selected
+                {% endif %}>
+                Rescindido
+                </option>
+
+            </select>
+
+            <button
+            type="submit"
+            class="salvar">
+
+                Salvar Alterações
+
+            </button>
+
+        </form>
+
+        <a href="/">
+
+            <button class="voltar">
+                Voltar
+            </button>
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>

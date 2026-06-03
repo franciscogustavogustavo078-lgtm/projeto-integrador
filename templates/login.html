@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Login</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        body {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f4f4;
+
+        }
+
+        form {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            width: 300px;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        }
+
+        h1 {
+
+            text-align: center;
+
+        }
+
+        input {
+
+            padding: 10px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+        }
+
+        button {
+
+            padding: 10px;
+
+            border: none;
+
+            border-radius: 5px;
+
+            background: #1e3a8a;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+        }
+
+        button:hover {
+
+            background: #2563eb;
+
+        }
+
+        .senha {
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: #1e3a8a;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <form
+    action="/login"
+    method="POST">
+
+        <h1>Nexus Contratos</h1>
+
+        <input
+        type="text"
+        name="usuario"
+        placeholder="Usuário"
+        required>
+
+        <input
+        type="password"
+        name="senha"
+        placeholder="Senha"
+        required>
+
+        <button type="submit">
+
+            Entrar
+
+        </button>
+
+        <a href="#"
+        class="senha">
+
+            Esqueceu a senha?
+
+        </a>
+
+    </form>
+
+</body>
+
+</html>
