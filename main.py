@@ -31,6 +31,25 @@ class Contrato(db.Model):
     status = db.Column(db.String(50))
 
 
+class Parte(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    nome = db.Column(db.String(100))
+
+    tipo = db.Column(db.String(100))
+
+    documento = db.Column(db.String(100))
+
+    contato = db.Column(db.String(100))
+
+    email = db.Column(db.String(100))
+
+    telefone = db.Column(db.String(100))
+
+    endereco = db.Column(db.String(300))
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 
@@ -149,6 +168,23 @@ def salvar():
     return redirect('/')
 
 
+@app.route('/vercontrato/<int:id>')
+def vercontrato(id):
+
+    if 'usuario' not in session:
+
+        return redirect('/login')
+
+    contrato = Contrato.query.get(id)
+
+    return render_template(
+
+        'vercontrato.html',
+
+        contrato=contrato
+    )
+
+
 @app.route('/editar/<int:id>')
 def editar(id):
 
@@ -204,9 +240,189 @@ def excluir(id):
     return redirect('/')
 
 
+@app.route('/partes')
+def partes():
+
+    if 'usuario' not in session:
+
+        return redirect('/login')
+
+    partes = Parte.query.all()
+
+    return render_template(
+
+        'partes.html',
+
+        partes=partes
+    )
+
+
+@app.route('/cadpartes')
+def cadpartes():
+
+    if 'usuario' not in session:
+
+        return redirect('/login')
+
+    return render_template(
+
+        'cadpartes.html'
+    )
+
+
+@app.route('/salvarparte', methods=['POST'])
+def salvarparte():
+
+    nova = Parte(
+
+        nome=request.form['nome'],
+
+        tipo=request.form['tipo'],
+
+        documento=request.form['documento'],
+
+        contato=request.form['contato'],
+
+        email=request.form['email'],
+
+        telefone=request.form['telefone'],
+
+        endereco=request.form['endereco']
+    )
+
+    db.session.add(nova)
+
+    db.session.commit()
+
+    return redirect('/partes')
+
+
+@app.route('/verparte/<int:id>')
+def verparte(id):
+
+    if 'usuario' not in session:
+
+        return redirect('/login')
+
+    parte = Parte.query.get(id)
+
+    return render_template(
+
+        'verparte.html',
+
+        parte=parte
+    )
+
+
+@app.route('/editarparte/<int:id>')
+def editarparte(id):
+
+    if 'usuario' not in session:
+
+        return redirect('/login')
+
+    parte = Parte.query.get(id)
+
+    return render_template(
+
+        'editarparte.html',
+
+        parte=parte
+    )
+
+
+@app.route('/atualizarparte/<int:id>', methods=['POST'])
+def atualizarparte(id):
+
+    parte = Parte.query.get(id)
+
+    parte.nome = request.form['nome']
+
+    parte.tipo = request.form['tipo']
+
+    parte.documento = request.form['documento']
+
+    parte.contato = request.form['contato']
+
+    parte.email = request.form['email']
+
+    parte.telefone = request.form['telefone']
+
+    parte.endereco = request.form['endereco']
+
+    db.session.commit()
+
+    return redirect('/partes')
+
+
+@app.route('/excluirparte/<int:id>')
+def excluirparte(id):
+
+    parte = Parte.query.get(id)
+
+    db.session.delete(parte)
+
+    db.session.commit()
+
+    return redirect('/partes')
+
+
+@app.route('/relatorios')
+def relatorios():
+
+    if 'usuario' not in session:
+
+        return redirect('/login')
+
+    contratos = Contrato.query.all()
+
+    total = Contrato.query.count()
+
+    ativos = Contrato.query.filter_by(status='Ativo').count()
+
+    valor_total = 0
+
+    for contrato in contratos:
+
+        try:
+
+            valor_total += float(contrato.valor)
+
+        except:
+
+            pass
+
+    return render_template(
+
+        'relatorios.html',
+
+        contratos=contratos,
+
+        total=total,
+
+        ativos=ativos,
+
+        valor_total=valor_total
+    )
+
+
+@app.route('/config')
+def config():
+
+    if 'usuario' not in session:
+
+        return redirect('/login')
+
+    return render_template(
+
+        'config.html'
+    )
+
+
 if __name__ == '__main__':
 
     with app.app_context():
+
         db.create_all()
 
     app.run(debug=True, port=5000)
