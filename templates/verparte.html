@@ -1,42 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Detalhes da Parte</title>
-    <link rel="stylesheet" href="css/verparte.css">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='verparte.css') }}">
+
 </head>
+
 <body>
 
-<!-- MENU -->
-<div class="menu">
-    <h2>Contratos</h2>
-    <ul>
-        <li><a href="index.html">Dashboard</a></li>
-        <li><a href="contratos.html">Contratos</a></li>
-        <li><a href="partes.html">Partes</a></li>
-        <li><a href="relatorios.html">Relatórios</a></li>
-        <li><a href="config.html">Configurações</a></li>
-    </ul>
-</div>
+    <!-- MENU -->
+    <div class="menu">
 
-<!-- CONTEÚDO -->
-<div class="conteudo">
-    <h1>Detalhes da Parte</h1>
+        <h2>Contratos</h2>
 
-    <div class="card">
-        <p><strong>Nome:</strong> Empresa ABC</p>
-        <p><strong>Tipo:</strong> Fornecedor</p>
-        <p><strong>Documento:</strong> 00.000.000/0001-00</p>
-        <p><strong>Contato:</strong> João Silva</p>
-        <p><strong>Email:</strong> contato@abc.com</p>
-        <p><strong>Telefone:</strong> (88) 99999-0000</p>
-        <p><strong>Endereço:</strong> Rua Exemplo, 123</p>
+        <ul>
+
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/">Contratos</a>
+            </li>
+
+            <li>
+                <a href="/partes">Partes</a>
+            </li>
+
+            <li>
+                <a href="/relatorios">Relatórios</a>
+            </li>
+
+            <li>
+                <a href="/config">Configurações</a>
+            </li>
+
+        </ul>
+
     </div>
 
-    <a href="partes.html">
-        <button class="voltar">Voltar</button>
-    </a>
-</div>
+    <!-- CONTEÚDO -->
+    <div class="conteudo">
+
+        <h1>Detalhes da Parte</h1>
+
+        <div class="card">
+
+            <p>
+
+                <strong>Nome:</strong>
+
+                {{ parte.nome }}
+
+            </p>
+
+            <p>
+
+                <strong>Tipo:</strong>
+
+                {{ parte.tipo }}
+
+            </p>
+
+            <p>
+
+                <strong>Documento:</strong>
+
+                {{ parte.documento }}
+
+            </p>
+
+            <p>
+
+                <strong>Contato:</strong>
+
+                {{ parte.contato }}
+
+            </p>
+
+            <p>
+
+                <strong>Email:</strong>
+
+                {{ parte.email }}
+
+            </p>
+
+            <p>
+
+                <strong>Telefone:</strong>
+
+                {{ parte.telefone }}
+
+            </p>
+
+            <p>
+
+                <strong>Endereço:</strong>
+
+                {{ parte.endereco }}
+
+            </p>
+
+        </div>
+
+        <a href="/partes">
+
+            <button class="voltar">
+
+                Voltar
+
+            </button>
+
+        </a>
+
+    </div>
 
 </body>
+
 </html>

@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Nova Parte</title>
-    <link rel="stylesheet" href="css/cadpartes.css">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='cadpartes.css') }}">
+
 </head>
+
 <body>
 
     <!-- MENU -->
     <div class="menu">
+
         <h2>Contratos</h2>
+
         <ul>
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="contratos.html">Contratos</a></li>
-            <li><a href="partes.html">Partes</a></li>
-            <li><a href="relatorios.html">Relatórios</a></li>
-            <li><a href="config.html">Configurações</a></li>
+
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/">Contratos</a>
+            </li>
+
+            <li>
+                <a href="/partes">Partes</a>
+            </li>
+
+            <li>
+                <a href="/relatorios">Relatórios</a>
+            </li>
+
+            <li>
+                <a href="/config">Configurações</a>
+            </li>
+
         </ul>
+
     </div>
 
     <!-- CONTEÚDO -->
@@ -24,32 +50,73 @@
 
         <h1>Nova Parte Contratante</h1>
 
-        <form class="formulario">
+        <form
+        class="formulario"
+        action="/salvarparte"
+        method="POST">
 
-            <input type="text" placeholder="Nome">
+            <input
+            type="text"
+            name="nome"
+            placeholder="Nome"
+            required>
 
-            <select>
-                <option>Tipo</option>
-                <option>Fornecedor</option>
-                <option>Cliente</option>
-                <option>Parceiro</option>
+            <select name="tipo">
+
+                <option>
+                    Tipo
+                </option>
+
+                <option>
+                    Fornecedor
+                </option>
+
+                <option>
+                    Cliente
+                </option>
+
+                <option>
+                    Parceiro
+                </option>
+
             </select>
 
-            <input type="text" placeholder="CPF/CNPJ">
+            <input
+            type="text"
+            name="documento"
+            placeholder="CPF/CNPJ">
 
-            <input type="text" placeholder="Contato">
+            <input
+            type="text"
+            name="contato"
+            placeholder="Contato">
 
-            <input type="email" placeholder="Email">
+            <input
+            type="email"
+            name="email"
+            placeholder="Email">
 
-            <input type="text" placeholder="Telefone">
+            <input
+            type="text"
+            name="telefone"
+            placeholder="Telefone">
 
-            <textarea placeholder="Endereço"></textarea>
+            <textarea
+            name="endereco"
+            placeholder="Endereço"></textarea>
 
-            <button class="salvar">Salvar Parte</button>
+            <button
+            type="submit"
+            class="salvar">
+
+                Salvar Parte
+
+            </button>
 
         </form>
 
     </div>
 
 </body>
+
 </html>

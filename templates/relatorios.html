@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Relatórios</title>
-    <link rel="stylesheet" href="css/relatorios.css">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='relatorios.css') }}">
+
 </head>
+
 <body>
 
     <!-- MENU -->
     <div class="menu">
+
         <h2>Contratos</h2>
+
         <ul>
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="contratos.html">Contratos</a></li>
-            <li><a href="partes.html">Partes</a></li>
-            <li><a href="relatorios.html">Relatórios</a></li>
-            <li><a href="config.html">Configurações</a></li>
+
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/">Contratos</a>
+            </li>
+
+            <li>
+                <a href="/partes">Partes</a>
+            </li>
+
+            <li>
+                <a href="/relatorios">Relatórios</a>
+            </li>
+
+            <li>
+                <a href="/config">Configurações</a>
+            </li>
+
         </ul>
+
     </div>
 
     <!-- CONTEÚDO -->
@@ -26,66 +52,105 @@
 
         <!-- FILTROS -->
         <div class="filtros">
+
             <input type="date">
+
             <select>
+
                 <option>Todos</option>
+
                 <option>Ativo</option>
+
                 <option>Vencido</option>
+
                 <option>Rescindido</option>
+
             </select>
-            <button class="buscar">Buscar</button>
+
+            <button class="buscar">
+
+                Buscar
+
+            </button>
+
         </div>
 
         <!-- CARDS -->
         <div class="cards">
+
             <div class="card">
+
                 <h3>Total de Contratos</h3>
-                <p>25</p>
+
+                <p>{{ total }}</p>
+
             </div>
 
             <div class="card">
+
                 <h3>Valor Total</h3>
-                <p>R$ 50.000</p>
+
+                <p>R$ {{ valor_total }}</p>
+
             </div>
 
             <div class="card">
+
                 <h3>Ativos</h3>
-                <p>18</p>
+
+                <p>{{ ativos }}</p>
+
             </div>
+
         </div>
 
         <!-- TABELA -->
         <table>
+
             <thead>
+
                 <tr>
+
                     <th>Nº</th>
+
                     <th>Tipo</th>
+
                     <th>Parte</th>
+
                     <th>Valor</th>
+
                     <th>Status</th>
+
                 </tr>
+
             </thead>
 
             <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>Serviço</td>
-                    <td>Empresa ABC</td>
-                    <td>R$ 10.000</td>
-                    <td>Ativo</td>
-                </tr>
+
+                {% for contrato in contratos %}
 
                 <tr>
-                    <td>002</td>
-                    <td>Parceria</td>
-                    <td>Empresa XYZ</td>
-                    <td>R$ 5.000</td>
-                    <td>Vencido</td>
+
+                    <td>{{ contrato.numero }}</td>
+
+                    <td>{{ contrato.tipo }}</td>
+
+                    <td>{{ contrato.parte }}</td>
+
+                    <td>R$ {{ contrato.valor }}</td>
+
+                    <td>{{ contrato.status }}</td>
+
                 </tr>
+
+                {% endfor %}
+
             </tbody>
+
         </table>
 
     </div>
 
 </body>
+
 </html>

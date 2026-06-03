@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Configurações</title>
-    <link rel="stylesheet" href="css/config.css">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='config.css') }}">
+
 </head>
+
 <body>
 
     <!-- MENU -->
     <div class="menu">
+
         <h2>Contratos</h2>
+
         <ul>
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="contratos.html">Contratos</a></li>
-            <li><a href="partes.html">Partes</a></li>
-            <li><a href="relatorios.html">Relatórios</a></li>
-            <li><a href="config.html">Configurações</a></li>
+
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/">Contratos</a>
+            </li>
+
+            <li>
+                <a href="/partes">Partes</a>
+            </li>
+
+            <li>
+                <a href="/relatorios">Relatórios</a>
+            </li>
+
+            <li>
+                <a href="/config">Configurações</a>
+            </li>
+
         </ul>
+
     </div>
 
     <!-- CONTEÚDO -->
@@ -26,29 +52,82 @@
 
         <!-- ALTERAR SENHA -->
         <div class="card">
+
             <h3>Alterar Senha</h3>
-            <input type="password" placeholder="Senha atual">
-            <input type="password" placeholder="Nova senha">
-            <input type="password" placeholder="Confirmar nova senha">
-            <button class="salvar">Salvar</button>
+
+            <form>
+
+                <input
+                type="password"
+                placeholder="Senha atual">
+
+                <input
+                type="password"
+                placeholder="Nova senha">
+
+                <input
+                type="password"
+                placeholder="Confirmar nova senha">
+
+                <button
+                class="salvar">
+
+                    Salvar
+
+                </button>
+
+            </form>
+
         </div>
 
         <!-- PREFERÊNCIAS -->
         <div class="card">
+
             <h3>Preferências</h3>
-            
+
             <label>
-                <input type="checkbox"> Ativar notificações
+
+                <input type="checkbox">
+
+                Ativar notificações
+
             </label>
 
             <label>
-                <input type="checkbox"> Tema escuro
+
+                <input type="checkbox">
+
+                Tema escuro
+
             </label>
 
-            <button class="salvar">Salvar Preferências</button>
+            <button class="salvar">
+
+                Salvar Preferências
+
+            </button>
+
+        </div>
+
+        <!-- LOGOUT -->
+        <div class="card">
+
+            <h3>Sessão</h3>
+
+            <a href="/logout">
+
+                <button class="salvar">
+
+                    Sair do Sistema
+
+                </button>
+
+            </a>
+
         </div>
 
     </div>
 
 </body>
+
 </html>
