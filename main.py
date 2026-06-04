@@ -251,7 +251,7 @@ def partes():
 
     return render_template(
 
-        'partes.html',
+        '/partes',
 
         partes=partes
     )
@@ -266,7 +266,7 @@ def cadpartes():
 
     return render_template(
 
-        'cadpartes.html'
+        'cad/partes'
     )
 
 
